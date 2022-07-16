@@ -1,18 +1,18 @@
-'use strict';
-
-var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
 
 /**
  * Basic Provider.
  * Intended as an Abstract Class. All providers must extend from this.
  */
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 var BasicProvider = function BasicProvider(container, id, resource) {
-  var options = arguments[3] === undefined ? {} : arguments[3];
+  var options = arguments.length <= 3 || arguments[3] === undefined ? {} : arguments[3];
 
   _classCallCheck(this, BasicProvider);
 

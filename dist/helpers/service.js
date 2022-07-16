@@ -1,8 +1,3 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
 /*! Service helper */
 
 /**
@@ -14,10 +9,15 @@ Object.defineProperty(exports, '__esModule', {
  * @param {Array}  resourceArguments=[] An array of Resource arguments
  * @api public
  */
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
 exports.resolveDependencies = resolveDependencies;
 
 function resolveDependencies(container) {
-  var resourceArguments = arguments[1] === undefined ? [] : arguments[1];
+  var resourceArguments = arguments.length <= 1 || arguments[1] === undefined ? [] : arguments[1];
 
   return new Promise(function (resolve, reject) {
     if (!resourceArguments.length) {

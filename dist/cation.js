@@ -1,39 +1,39 @@
+/*! Module dependencies */
 'use strict';
-
-var _interopRequireWildcard = function (obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (typeof obj === 'object' && obj !== null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } };
-
-var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
-
-var _slicedToArray = function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i['return']) _i['return'](); } finally { if (_d) throw _e; } } return _arr; } else { throw new TypeError('Invalid attempt to destructure non-iterable instance'); } };
-
-var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
-/*! Module dependencies */
 
-var _BasicProvider = require('./providers/basicprovider');
+var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i['return']) _i['return'](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError('Invalid attempt to destructure non-iterable instance'); } }; })();
 
-var _BasicProvider2 = _interopRequireDefault(_BasicProvider);
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _ServiceProvider = require('./providers/serviceprovider');
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
 
-var _ServiceProvider2 = _interopRequireDefault(_ServiceProvider);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _FactoryProvider = require('./providers/factoryprovider');
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var _FactoryProvider2 = _interopRequireDefault(_FactoryProvider);
+var _providersBasicprovider = require('./providers/basicprovider');
 
-var _StaticProvider = require('./providers/staticprovider');
+var _providersBasicprovider2 = _interopRequireDefault(_providersBasicprovider);
 
-var _StaticProvider2 = _interopRequireDefault(_StaticProvider);
+var _providersServiceprovider = require('./providers/serviceprovider');
 
-var _import = require('./helpers/decorator');
+var _providersServiceprovider2 = _interopRequireDefault(_providersServiceprovider);
 
-var decoratorUtils = _interopRequireWildcard(_import);
+var _providersFactoryprovider = require('./providers/factoryprovider');
+
+var _providersFactoryprovider2 = _interopRequireDefault(_providersFactoryprovider);
+
+var _providersStaticprovider = require('./providers/staticprovider');
+
+var _providersStaticprovider2 = _interopRequireDefault(_providersStaticprovider);
+
+var _helpersDecorator = require('./helpers/decorator');
+
+var decoratorUtils = _interopRequireWildcard(_helpersDecorator);
 
 /*! Private definitions */
 
@@ -90,7 +90,7 @@ var __decoratorFunctionsMap__ = Symbol();
 
 var Cation = (function () {
   function Cation() {
-    var _ref = arguments[0] === undefined ? {} : arguments[0];
+    var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
     var id = _ref.id;
 
@@ -102,29 +102,29 @@ var Cation = (function () {
     this[__providerConstructorsMap__] = new Map();
     this[__decoratorFunctionsMap__] = new Map();
 
-    this.addProvider('service', _ServiceProvider2['default']);
-    this.addProvider('factory', _FactoryProvider2['default']);
-    this.addProvider('static', _StaticProvider2['default']);
+    this.addProvider('service', _providersServiceprovider2['default']);
+    this.addProvider('factory', _providersFactoryprovider2['default']);
+    this.addProvider('static', _providersStaticprovider2['default']);
 
     this.register('container', this, {
       type: 'static'
     });
   }
 
+  // And here... we... GO.
+
+  /**
+   * Gets the container ID.
+   *
+   * @return {String}
+   * @api public
+   */
+
   _createClass(Cation, [{
     key: 'getId',
-
-    /**
-     * Gets the container ID.
-     *
-     * @return {String}
-     * @api public
-     */
     value: function getId() {
       return this[__containerId__];
     }
-  }, {
-    key: 'register',
 
     /**
      * Registers a resource on the container.
@@ -142,8 +142,10 @@ var Cation = (function () {
      * @return {Promise}
      * @api public
      */
+  }, {
+    key: 'register',
     value: function register(id, resource) {
-      var options = arguments[2] === undefined ? {} : arguments[2];
+      var options = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
 
       if (!id) {
         throw new Error('`id` is required');
@@ -181,8 +183,6 @@ var Cation = (function () {
 
       this[__providerInstancesMap__].set(id, new Provider(this, id, resource, options));
     }
-  }, {
-    key: 'get',
 
     /**
      * Retrieves a resource from the container.
@@ -191,6 +191,8 @@ var Cation = (function () {
      * @return {Promise}
      * @api public
      */
+  }, {
+    key: 'get',
     value: function get(id) {
       var _this = this;
 
@@ -239,8 +241,6 @@ var Cation = (function () {
         });
       });
     }
-  }, {
-    key: 'has',
 
     /**
      * Checks if a resource is registered.
@@ -249,6 +249,8 @@ var Cation = (function () {
      * @return {Boolean}
      * @api public
      */
+  }, {
+    key: 'has',
     value: function has(id) {
       if (this[__providerInstancesMap__].has(id)) {
         return true;
@@ -256,8 +258,6 @@ var Cation = (function () {
 
       return false;
     }
-  }, {
-    key: 'remove',
 
     /**
      * Removes a resource from the container.
@@ -265,6 +265,8 @@ var Cation = (function () {
      * @param {String}  id  Resource ID.
      * @api public
      */
+  }, {
+    key: 'remove',
     value: function remove(id) {
       if (!this.has(id)) {
         return;
@@ -272,8 +274,6 @@ var Cation = (function () {
 
       this[__providerInstancesMap__]['delete'](id);
     }
-  }, {
-    key: 'addProvider',
 
     /**
      * Registers a resource provider.
@@ -282,6 +282,8 @@ var Cation = (function () {
      * @param {Function} providerFunction Provider function.
      * @api public
      */
+  }, {
+    key: 'addProvider',
     value: function addProvider(name, providerFunction) {
       if (this.hasProvider(name)) {
         return;
@@ -291,8 +293,6 @@ var Cation = (function () {
 
       providerConstructorsMap.set(name, providerFunction);
     }
-  }, {
-    key: 'hasProvider',
 
     /**
      * Checks if a given provider is registered.
@@ -301,11 +301,11 @@ var Cation = (function () {
      * @return {Boolean}
      * @api public
      */
+  }, {
+    key: 'hasProvider',
     value: function hasProvider(name) {
       return this[__providerConstructorsMap__].has(name);
     }
-  }, {
-    key: 'removeProvider',
 
     /**
      * Removes a given provider.
@@ -313,6 +313,8 @@ var Cation = (function () {
      * @param {String}  name  Provider name.
      * @api public
      */
+  }, {
+    key: 'removeProvider',
     value: function removeProvider(name) {
       if (!this.hasProvider(name)) {
         return;
@@ -322,8 +324,6 @@ var Cation = (function () {
 
       providerConstructorsMap['delete'](name);
     }
-  }, {
-    key: 'addDecorator',
 
     /**
      * Registers a resource decorator.
@@ -332,6 +332,8 @@ var Cation = (function () {
      * @param {Function} decoratorFunction  Decorator function.
      * @api public
      */
+  }, {
+    key: 'addDecorator',
     value: function addDecorator(name, decoratorFunction) {
       if (this.hasDecorator(name)) {
         return;
@@ -341,8 +343,6 @@ var Cation = (function () {
 
       decoratorFunctionsMap.set(name, decoratorFunction);
     }
-  }, {
-    key: 'hasDecorator',
 
     /**
      * Checks if a given decorator is registered.
@@ -350,11 +350,11 @@ var Cation = (function () {
      * @param {String}  name  Decorator name.
      * @api public
      */
+  }, {
+    key: 'hasDecorator',
     value: function hasDecorator(name) {
       return this[__decoratorFunctionsMap__].has(name);
     }
-  }, {
-    key: 'removeDecorator',
 
     /**
      * Removes a given decorator.
@@ -362,6 +362,8 @@ var Cation = (function () {
      * @param {String}  name  Decorator name.
      * @api public
      */
+  }, {
+    key: 'removeDecorator',
     value: function removeDecorator(name) {
       if (!this.hasDecorator(name)) {
         return;
@@ -371,8 +373,6 @@ var Cation = (function () {
 
       decoratorFunctionsMap['delete'](name);
     }
-  }, {
-    key: 'isCached',
 
     /**
      * Checks if a resource is cached.
@@ -382,22 +382,22 @@ var Cation = (function () {
      * @return {Boolean}
      * @api public
      */
+  }, {
+    key: 'isCached',
     value: function isCached(id) {
       return this[__resourceInstancesMap__].has(id);
     }
-  }, {
-    key: 'clearCache',
 
     /**
      * Removes all singleton instances from cache.
      *
      * @api public
      */
+  }, {
+    key: 'clearCache',
     value: function clearCache() {
       this[__resourceInstancesMap__].clear();
     }
-  }, {
-    key: 'findTaggedResourceIds',
 
     /**
      * Returns an array of resource IDs for a given tag.
@@ -406,6 +406,8 @@ var Cation = (function () {
      * @return {Array}
      * @api public
      */
+  }, {
+    key: 'findTaggedResourceIds',
     value: function findTaggedResourceIds(tagName) {
       var providerInstancesMap = this[__providerInstancesMap__];
       var resourceIds = [];
@@ -447,9 +449,8 @@ var Cation = (function () {
   return Cation;
 })();
 
-// And here... we... GO.
 exports['default'] = Cation;
 // import Cation from 'cation'
-exports.BasicProvider = _BasicProvider2['default'];
+exports.BasicProvider = _providersBasicprovider2['default'];
 // import { BasicProvider } from 'cation'
 // import Cation, { BasicProvider } from 'cation'
